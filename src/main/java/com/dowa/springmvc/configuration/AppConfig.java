@@ -17,11 +17,6 @@ import org.springframework.web.servlet.view.JstlView;
  * locations to find the associated beans.
  * @EnableWebMvc is equivalent to mvc:annotation-driven in XML.
  * Method viewResolver() configures a view resolver to identify the real view.
- *
- * To override those default by your own custom [internationalized] messages from an external Message bundle
- * [.properties file], we need to configure a ResourceBundleMessageSource.
- * Method messageSource is there for same purpose. Notice the parameter provided (messages) to basename method.
- * Spring will search for a file named messages.properties in application class path.
  */
 
 @Configuration

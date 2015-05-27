@@ -14,11 +14,13 @@
   <meta charset="utf-8">
   <title>User Registration Form</title>
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta username="viewport" content="width=device-width, initial-scale=1.0">
 
-
-  <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-  <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+  <style>
+    .error {
+      color: #ff0000;
+    }
+  </style>
 
 </head>
 
@@ -30,11 +32,11 @@
       <h1>Users</h1>
       <form:form method="POST" action="new" commandName="user" class="form-horizontal" modelAttribute="user">
         <div class="control-group">
-          <form:label cssClass="control-label" path="name">Name:</form:label>
+          <form:label cssClass="control-label" path="username">Name:</form:label>
           <div class="controls">
-            <form:input path="name" id="name"/>
+            <form:input path="username" id="username"/>
             <div>
-              <form:errors path="name" cssClass="error"/>
+              <form:errors path="username" cssClass="error"/>
             </div>
           </div>
         </div>
@@ -43,18 +45,17 @@
           <div class="controls">
             <form:password path="password" id="password"/>
           </div>
+          <div>
+            <form:errors path="password" cssClass="error"/>
+          </div>
         </div>
         <div class="control-group">
           <form:label cssClass="control-label" path="email">Email:</form:label>
           <div class="controls">
             <form:input path="email" id="email"/>
-            <div><form:errors path="email" cssClass="error"/></div>
-          </div>
-        </div>
-        <div class="control-group">
-          <form:label cssClass="control-label" path="ssn">SSN:</form:label>
-          <div class="controls">
-            <form:input path="ssn" id="ssn"/>
+            <div>
+              <form:errors path="email" cssClass="error"/>
+            </div>
           </div>
         </div>
       <div class="control-group">

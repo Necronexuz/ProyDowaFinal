@@ -15,5 +15,5 @@ public interface UserService {
 
     List<User> findAllUsers();
 
-    void deleteUserBySsn(String ssn);
+    void deleteUserById(int id_user);
 }

@@ -26,10 +26,16 @@ public class AppController {
     @Autowired
     UserService service;
 
+
+    @RequestMapping(value ={"/"}, method = RequestMethod.GET)
+    public String homePage(ModelMap model){
+        return "home";
+    }
+
     /**
      * This methos will list all existing users
      */
-    @RequestMapping(value = {"/", "/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String listUsers(ModelMap model){
         List<User> users = service.findAllUsers();
         model.addAttribute("users",users);
@@ -57,16 +63,16 @@ public class AppController {
         }
         service.saveUser(user);
 
-        model.addAttribute("success", "User " + user.getName() + " registred successfully");
+        model.addAttribute("success", "User " + user.getUsername() + " registred successfully");
         return "success";
     }
 
     /**
      * This method will delete an user by it's ssn value
      */
-    @RequestMapping(value = {"/delete-{ssn}-user"}, method = RequestMethod.GET)
-    public String deleteUser(@PathVariable String ssn){
-        service.deleteUserBySsn(ssn);
+    @RequestMapping(value = {"/delete-{id_user}-user"}, method = RequestMethod.GET)
+    public String deleteUser(@PathVariable int id_user){
+        service.deleteUserById(id_user);
         return "redirect:/list";
     }
 
