@@ -1,8 +1,7 @@
 package com.dowa.springmvc.controller;
 
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,14 +32,14 @@ public class TopicController {
         return "alltopics";
     }
 
-    @RequestMapping(value = {"/newtopic"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/new-topic"}, method = RequestMethod.GET)
     public String newTopic(ModelMap model){
         Topics topics = new Topics();
         model.addAttribute("topics",topics);
         return "regtopic";
     }
 
-    @RequestMapping(value = {"/newtopic"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/new-topic"}, method = RequestMethod.POST)
     public String saveTopic(@Valid Topics topic, BindingResult result, ModelMap model){
         if(result.hasErrors()){
             return "regtopic";

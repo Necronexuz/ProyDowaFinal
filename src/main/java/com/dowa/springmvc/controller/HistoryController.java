@@ -6,7 +6,6 @@ import javax.validation.Valid;
 import com.dowa.springmvc.model.Topics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,14 +32,14 @@ public class HistoryController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = {"/listStory"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/list-story"}, method = RequestMethod.GET)
     public String listStories(ModelMap model){
         List<History> histories = historyService.getStories();
         model.addAttribute("histories", histories);
         return "allstories";
     }
 
-    @RequestMapping(value = {"/newStory"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/new-story"}, method = RequestMethod.GET)
     public String newStory(ModelMap model){
         History history = new History();
         List<Topics> topics = topicService.getTopics();
@@ -49,7 +48,7 @@ public class HistoryController {
         return "regstory";
     }
 
-    @RequestMapping(value = {"/newStory"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/new-story"}, method = RequestMethod.POST)
     public String saveStory (@Valid History history, BindingResult result, ModelMap model){
        if(result.hasErrors()){
            return "regStory";
@@ -62,7 +61,7 @@ public class HistoryController {
     @RequestMapping(value = {"/delete-{id_story}-story"}, method = RequestMethod.GET)
     public String deleteUser(@PathVariable int id_story){
         historyService.deleteStory(id_story);
-        return "redirect:/list";
+        return "redirect:/list-story";
     }
 
     @RequestMapping(value = {"/edit-{id_story}-story"}, method = RequestMethod.GET)

@@ -18,6 +18,7 @@ import java.util.Properties;
 /**
  * Created by nexuz on 24/05/15.
  * NEXUZ NOTES:
+ * TODO: Configure Hibernate to current session context Thread
  * @Configuration indicates that this class contains one or more bean methods annotated with @Bean producing beans
  * manageable by spring container. In our case, this class represent hibernate configuration.
  * @ComponentScan is equivalent to context:component-scan base-package="..." in xml, providing with where to look for
@@ -26,13 +27,6 @@ import java.util.Properties;
  * transaction management capability.
  * @PropertySource is used to declare a set of properties(defined in a properties file in application classpath) in
  * Spring run-time Environment, providing flexibility to have different values in different application environments.
- *
- * Method sessionFactory() is creating a LocalSessionFactoryBean, which exactly mirrors the XML based
- * configuration : We need a dataSource and hibernate properties (same as hibernate.properties).
- * Thanks to @PropertySource, we can externalize the real values in a .properties file, and use
- * Spring’s Environment to fetch the value corresponding to an item. Once the SessionFactory is created,
- * it will be injected into Bean method transactionManager which may eventually provide transaction support
- * for the sessions created by this sessionFactory.
  */
 
 @Configuration
